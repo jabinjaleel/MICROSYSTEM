@@ -60,7 +60,7 @@ void main() {
   for (k = 1; k <= n - 1; k++) {
     stdout.write(" *");
   }
-  print("");
+  print(" ");
   print("_________________________");
   print("");
 //printing V
