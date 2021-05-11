@@ -33,7 +33,7 @@ class exam {
   }
 
   void disp() {
-    print("ExamId:" + examid.toString());
+    print("ExamId: " + examid.toString());
     print(ques);
   }
 }
