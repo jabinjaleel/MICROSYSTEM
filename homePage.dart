@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:search_widget/search_widget.dart';
@@ -36,9 +37,9 @@ class HomePageState extends State<HomePageStateful> {
         body: Column(
       children: [
         Container(
-            padding: EdgeInsets.only(top: 30, left: 10),
+            padding: EdgeInsets.only(top: 40, left: 10),
             width: double.infinity,
-            height: 250,
+            height: 270,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.centerLeft,
@@ -47,67 +48,65 @@ class HomePageState extends State<HomePageStateful> {
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(12),
                     bottomRight: Radius.circular(12))),
-            child: Column(children: [
-              Row(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.menu,
-                    size: 25,
-                    color: Colors.white,
+                  Row(children: [
+                    Text(
+                      "Welcome Back",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      width: 95,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white60,
+                          borderRadius: BorderRadius.circular(10)),
+                      width: 50,
+                      height: 50,
+                      child: IconButton(
+                        icon: Icon(Icons.menu),
+                        onPressed: () => {},
+                      ),
+                    )
+                  ]),
+                  Text(
+                    "Student!",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 35),
+                  ),
+                  SizedBox(
+                    height: 70,
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Container(
+                            width: 400,
+                            height: 60,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  labelText: "Search",
+                                  prefixIcon: Icon(Icons.search),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20)))),
+                            ))
+                      ],
+                    ),
                   )
-                ],
-              ),
-              SizedBox(
-                height: 70,
-              ),
-              Center(
-                  child: AnimatedTextKit(
-                isRepeatingAnimation: true,
-                animatedTexts: [
-                  ColorizeAnimatedText("MICROLECTURE MOBILE LEARNING SYSTEM",
-                      textStyle: TextStyle(color: Colors.white, fontSize: 18),
-                      colors: clr),
-                  FadeAnimatedText("An Advanced E-Learning Platform",
-                      textStyle: TextStyle(color: Colors.white, fontSize: 15)),
-                  RotateAnimatedText("LEARN",
-                      textStyle: TextStyle(
-                          color: Colors.white,
-                          fontFamily: "Horizon",
-                          fontSize: 30)),
-                  RotateAnimatedText("THINK",
-                      textStyle: TextStyle(
-                          color: Colors.white,
-                          fontFamily: "Horizon",
-                          fontSize: 30)),
-                  RotateAnimatedText("BUILD",
-                      textStyle: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Horizon',
-                          fontSize: 30)),
-                ],
-              )),
-            ])),
+                ])),
         SizedBox(
           height: 10,
-        ),
-        Container(
-          child: Row(
-            children: [
-              Container(
-                  padding: EdgeInsets.only(left: 15),
-                  width: 400,
-                  height: 60,
-                  child: TextField(
-                    decoration: InputDecoration(
-                        labelText: "Search",
-                        prefixIcon: Icon(Icons.search),
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20)))),
-                  ))
-            ],
-          ),
         ),
         SizedBox(
           height: 20,
@@ -124,198 +123,204 @@ class HomePageState extends State<HomePageStateful> {
               ),
             ])),
         SizedBox(
-          height: 20,
+          height: 10,
+        ),
+        ListView(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(8),
+            children: <Widget>[
+              CarouselSlider(
+                items: [
+                  Container(
+                    padding: EdgeInsets.only(top: 20),
+                    margin: EdgeInsets.all(6.0),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [Colors.green, Colors.greenAccent]),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    height: 80,
+                    width: 80,
+                    child: Center(
+                        child: Column(
+                      children: [
+                        Expanded(
+                            child: Icon(
+                          CupertinoIcons.book_solid,
+                          color: Colors.white,
+                        )),
+                        Expanded(
+                            child: Text(
+                          "Physics",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: "MonoSpace"),
+                        ))
+                      ],
+                    )),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 20),
+                    margin: EdgeInsets.all(6.0),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [Colors.deepOrange, Colors.orangeAccent]),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    height: 80,
+                    width: 80,
+                    child: Center(
+                        child: Column(
+                      children: [
+                        Expanded(
+                          child: Icon(
+                            CupertinoIcons.book_solid,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Expanded(
+                            child: Text(
+                          "Maths",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: "MonoSpace"),
+                        ))
+                      ],
+                    )),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 20),
+                    margin: EdgeInsets.all(6.0),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [Colors.blueAccent, Colors.lightBlueAccent]),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    height: 80,
+                    width: 80,
+                    child: Center(
+                        child: Column(
+                      children: [
+                        Expanded(
+                          child: Icon(
+                            CupertinoIcons.book_solid,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Expanded(
+                            child: Text(
+                          "Chemistry",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: "MonoSpace"),
+                        ))
+                      ],
+                    )),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 20),
+                    margin: EdgeInsets.all(6.0),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [Colors.cyan, Colors.cyanAccent]),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    height: 80,
+                    width: 80,
+                    child: Center(
+                        child: Column(
+                      children: [
+                        Expanded(
+                          child: Icon(
+                            CupertinoIcons.book_solid,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Expanded(
+                            child: Text(
+                          "IEEE",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: "MonoSpace"),
+                        ))
+                      ],
+                    )),
+                  )
+                ],
+                options: CarouselOptions(
+                  height: 110.0,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  aspectRatio: 16 / 9,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enableInfiniteScroll: true,
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  viewportFraction: 0.3,
+                ),
+              )
+            ]),
+        SizedBox(
+          height: 15,
         ),
         Container(
-          padding: EdgeInsets.only(left: 60),
-          child: Row(
-            children: [
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.book,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      "Physics",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                ),
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Colors.purple, Colors.blue]),
-                    borderRadius: BorderRadius.circular(10)),
+            padding: EdgeInsets.only(left: 15),
+            child: Row(children: [
+              Text(
+                "Top Subjects",
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "MonoSpace"),
               ),
-              SizedBox(
-                width: 20,
-              ),
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.book,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      "Physics",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                ),
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Colors.cyan, Colors.cyanAccent]),
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.greenAccent),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.book,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      "Chemistry",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                ),
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Colors.green, Colors.lightGreen]),
-                    borderRadius: BorderRadius.circular(10)),
-              )
-            ],
-          ),
-        ),
+            ])),
         SizedBox(
           height: 20,
         ),
         Container(
-          padding: EdgeInsets.only(left: 60),
+         // padding: EdgeInsets.only(left: 20),
+          height: 100,
+          width: 380,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.pink[50],
+          ),
           child: Row(
-            children: [
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.book,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      "Maths",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                ),
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Colors.deepOrange, Colors.orange]),
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.book,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      "English",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                ),
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Colors.deepPurple, Colors.purpleAccent]),
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.greenAccent),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.book,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      "Hindi",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                ),
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Colors.purpleAccent, Colors.blue]),
-                    borderRadius: BorderRadius.circular(10)),
-              )
+            children: [Expanded(child:
+              Image.network(
+                "https://cdn.iconscout.com/icon/premium/png-512-thumb/physics-6-388049.png",
+                width: 50,
+                height: 50,
+              ),),
+              Expanded(child:
+              Text("JEE PHYSICS",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),),
+            Expanded(child:   Icon(Icons.more,color: Colors.black54,))
+            ],
+          ),
+        ),
+        SizedBox(height: 10,),
+        Container(
+          // padding: EdgeInsets.only(left: 20),
+          height: 100,
+          width: 380,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.yellow[100],
+          ),
+          child: Row(
+            children: [Expanded(child:
+            Image.network(
+              "https://icons-for-free.com/iconfiles/png/512/calculate+calculation+calculator+general+math+office-1320183160073420774.png",
+              width: 50,
+              height: 50,
+            ),),
+              Expanded(child:
+              Text("JEE MATHS",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),),
+              Expanded(child:   Icon(Icons.more,color: Colors.black54,))
             ],
           ),
         )

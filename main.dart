@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mbls/pages/homePage.dart';
 import 'package:mbls/pages/profile.dart';
+import 'package:mbls/pages/subscribedCourses.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,7 +37,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   int selectedindex = 0;
-  final List<Widget> bod = [HomePage(),ProfileDisplay()];
+  final List<Widget> bod = [HomePage(),DiplaySubscribe(),ProfileDisplay()];
   void onTabTapped(int index)
   {
     setState(() {
@@ -56,8 +57,8 @@ selectedindex=index;
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(Icons.home_work_outlined,
-                color: Colors.black
-                ,),
+
+                ),
               title: Text(
                 "Home",
                 style:
@@ -65,7 +66,7 @@ selectedindex=index;
               )),
           BottomNavigationBarItem(
               icon: Icon(Icons.menu_book,
-                color: Colors.black,),
+                ),
               title: Text(
                 "Courses",
                 style:
@@ -74,7 +75,7 @@ selectedindex=index;
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.subject,
-                color: Colors.black,
+
 
               ),
               title: Text(
@@ -86,7 +87,7 @@ selectedindex=index;
               )),
           BottomNavigationBarItem(
               icon: Icon(Icons.settings,
-                color: Colors.black,),
+                ),
               title: Text(
                 "Settings",
                 style:
@@ -97,7 +98,7 @@ selectedindex=index;
 
         ],
         currentIndex: selectedindex,
-        selectedItemColor: Colors.greenAccent,
+        selectedItemColor: Colors.blue,
         onTap: onTabTapped,
         backgroundColor: Colors.white,
       ),
